@@ -1,5 +1,7 @@
-import Document, { Head, Main, NextScript } from 'next/document';
+import Head from 'next/head';
+import { Main } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
+import styles from '../styles/Home.module.css';
 
 export default function Home() {
   const sheet = new ServerStyleSheet();

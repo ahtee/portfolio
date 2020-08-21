@@ -1,7 +1,11 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Document, { Head, Main, NextScript } from 'next/document';
+import { ServerStyleSheet } from 'styled-components';
+import styles from '../styles/Home.module.css';
 
 export default function Home() {
+  const sheet = new ServerStyleSheet();
+  const main = sheet.collectStyles(<Main />);
+  const styleTags = sheet.getStyleElement();
   return (
     <div className={styles.container}>
       <Head>
@@ -61,5 +65,5 @@ export default function Home() {
         </a>
       </footer>
     </div>
-  )
+  );
 }

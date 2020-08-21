@@ -37,4 +37,49 @@ export class BlogApi {
       return null;
     });
   }
+
+  convertImage = (rawImage): HeroImage => {
+    if (rawImage) {
+      return {
+        imageUrl: rawImage.file.url.replace('//', 'https://'),
+        description: rawImage.description,
+        title: rawImage.title,
+      };
+    }
+    return null;
+  };
+
+  convertAuthor = (rawAuthor): Author => {
+    if (rawAuthor) {
+      return {
+        name: rawAuthor.name,
+        phone: rawAuthor.phone,
+        shortBio: rawAuthor.shortBio,
+        title: rawAuthor.title,
+        email: rawAuthor.email,
+        company: rawAuthor.company,
+        twitter: rawAuthor.twitter,
+        facebook: rawAuthor.facebook,
+        github: rawAuthor.github,
+      };
+    }
+    return null;
+  };
+
+  convertPost = (rawData): BlogPost => {
+    const rawPost = rawData.fields;
+    const rawHeroImage = rawPost.heroImage ? rawPost.heroImage.fields : null;
+    const rawAuthor = rawPost.author ? rawPost.author.fields : null;
+    return {
+      id: rawData.sys.id,
+      body: rawData.sys.body,
+      description: rawData.description,
+      publishedDate: moment(rawPost.publishedDate).format('MMM DD YYYY'),
+      slug: rawPost.slug,
+      tags: rawPost.tags,
+      title: rawPost.title,
+      heroImage: this.convertImage(rawHeroImage),
+      author: this.convertAuthor(rawAuthor),
+    };
+  };
 }

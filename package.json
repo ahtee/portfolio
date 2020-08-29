@@ -1,23 +1,34 @@
 {
   "name": "portfolio",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "dev": "gatsby develop -p 9988 -o",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahtee/portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ahtee/portfolio/issues"
+  },
+  "homepage": "https://github.com/ahtee/portfolio#readme",
   "dependencies": {
-    "contentful": "^7.14.6",
-    "moment": "^2.27.0",
-    "next": "9.5.2",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
+    "@mdx-js/mdx": "^1.6.16",
+    "@mdx-js/react": "^1.6.16",
+    "babel-plugin-styled-components": "^1.11.1",
+    "gatsby": "^2.24.52",
+    "gatsby-plugin-mdx": "^1.2.37",
+    "gatsby-plugin-styled-components": "^3.3.10",
+    "gatsby-source-filesystem": "^2.3.27",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "styled-components": "^5.1.1"
   },
-  "devDependencies": {
-    "@types/node": "^14.6.0",
-    "@types/react": "^16.9.46",
-    "typescript": "^3.9.7"
-  }
+  "devDependencies": {}
 }

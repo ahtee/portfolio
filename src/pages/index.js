@@ -16,15 +16,15 @@ export default ({ data }) => {
   return (
     <Layout>
       <IndexWrapper>
-        {data.allMdx.nodes.map(({ id, excerpt, frontmatter, slug }) => (
+        {data.allMdx.nodes.map(({ id, excerpt, frontmatter, fields }) => (
           <PostWrapper key={id}>
-            <Link to={slug}>
+            <Link to={fields.slug}>
               {!!frontmatter.cover ? (
                 <Image sizes={frontmatter.cover.childImageSharp.sizes} />
               ) : null}
               <h1>{frontmatter.title}</h1>
-              <p>{frontmatter.date}</p>
               <p>{excerpt}</p>
+              <small>{frontmatter.date}</small>
             </Link>
           </PostWrapper>
         ))}
@@ -45,16 +45,10 @@ export const query = graphql`
         frontmatter {
           date(formatString: "MMM Do YYYY")
           title
-          cover {
-            publicURL
-            childImageSharp {
-              sizes(maxWidth: 2000, traceSVG: { color: "#639" }) {
-                ...GatsbyImageSharpSizes_tracedSVG
-              }
-            }
-          }
         }
-        slug
+        fields {
+          slug
+        }
       }
     }
   }

@@ -1,14 +1,22 @@
 const siteMetadata = {
-  title: `Ben Otte Blog`,
-  description: `Coding blog where I write about my thoughts and journey as a Web Software Developer.`,
+  title: `botted.`,
+  description: ``,
+  image: `/default-site-image.jpg`,
+  siteUrl: `https://benotte.com`,
+  siteLanguage: `en-US`,
+  siteLocale: `en_us`,
+  twitterUsername: `@bencotte`,
+  instagramUsername: `@bencotte`,
+  authorName: `Ben Otte`,
 };
 
 module.exports = {
   siteMetadata,
   plugins: [
     `gatsby-plugin-styled-components`,
-    `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
@@ -17,7 +25,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 500,
+              maxWidth: 590,
             },
           },
         ],
@@ -25,7 +33,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 500,
+              maxWidth: 590,
             },
           },
         ],
@@ -36,6 +44,12 @@ module.exports = {
       options: {
         path: `${__dirname}/posts`,
         name: `posts`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/images`,
       },
     },
   ],

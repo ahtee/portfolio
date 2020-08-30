@@ -6,7 +6,10 @@ exports.createPages = ({ actions, graphql }) => {
 
   return graphql(`
     {
-      allMdx {
+      allMdx(
+        sort: { fields: [frontmatter___date], order: DESC }
+        filter: { frontmatter: { published: { eq: true } } }
+      ) {
         nodes {
           frontmatter {
             title
@@ -19,12 +22,17 @@ exports.createPages = ({ actions, graphql }) => {
     .then((res) => {
       const posts = res.data.allMdx.nodes;
       // Create a page for each .mdx file
-      posts.forEach((post) => {
+      posts.forEach((post, index) => {
+        const previous = index === posts.length - 1 ? null : posts[index + 1];
+        const next = index === 0 ? null : posts[index - 1];
+
         createPage({
           path: post.slug,
           component: blogPostTemplate,
           context: {
             slug: post.slug,
+            previous,
+            next,
           },
         });
       });

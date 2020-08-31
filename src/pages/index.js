@@ -12,21 +12,25 @@ const Image = styled(Img)`
   border-radius: 5px;
 `;
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+`;
+
 export default ({ data }) => {
   return (
     <Layout>
       <IndexWrapper>
         {data.allMdx.nodes.map(({ id, excerpt, frontmatter, fields }) => (
-          <PostWrapper key={id}>
-            <Link to={fields.slug}>
+          <StyledLink to={fields.slug}>
+            <PostWrapper key={id}>
               {!!frontmatter.cover ? (
                 <Image sizes={frontmatter.cover.childImageSharp.sizes} />
               ) : null}
               <h1>{frontmatter.title}</h1>
               <p>{excerpt}</p>
               <small>{frontmatter.date}</small>
-            </Link>
-          </PostWrapper>
+            </PostWrapper>
+          </StyledLink>
         ))}
       </IndexWrapper>
     </Layout>

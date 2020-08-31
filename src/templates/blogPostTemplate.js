@@ -16,7 +16,7 @@ export default ({ data, pageContext }) => {
   return (
     <Layout>
       <h1>{frontmatter.title}</h1>
-      <p>{frontmatter.date}</p>
+      <small>{frontmatter.date}</small>
       <MDXRenderer>{body}</MDXRenderer>
       <FlexButtons>
         {previous && (
